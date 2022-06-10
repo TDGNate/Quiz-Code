@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Coding Quiz Game</title>
+		<link rel="stylesheet" href="./Assets/css/main.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Frontend Quiz Game</h1>
+		</header>
+		<!-- main section with card  -->
+		<main>
+			<div id="startGameContainer">
+				<button id="startGame">Start Quiz</button>
+			</div>
+			<div class="card">
+				<!-- Asking the Question  -->
+				<div class="screen-playing">
+					<p id="timer">00:00</p>
+					<h2 id="question">Why did the cat say hi?</h2>
+					<ul id="answers-section">
+						<li class="answer">Because</li>
+						<li class="answer">Why</li>
+						<li class="answer">Not</li>
+						<li class="answer">???</li>
+					</ul>
+					<em id="rightWrongText">This is wrong</em>
+				</div>
+				<!-- When Game ends  -->
+				<div class="screen-score">
+					<h2 class="screen-score-title">Game Over!</h2>
+					<div class="screen-score-sec1">
+						<h3>Score:<span id="score"> 77 </span></h3>
+						<hr />
+					</div>
+					<br />
+					<input
+						type="text"
+						id="screen-score-inputText"
+						placeholder="Enter Initials"
+					/>
+					<button id="screen-score-Btn">Save Score</button>
+				</div>
+			</div>
+			<div class="screen-highlight">
+				<h2>Your Highlights</h2>
+				<hr />
+				<br />
+				<ul class="screen-highlight-score-container">
+					<li class="screen-highlight-score">
+						25 <span class="screen-highlight-score-initial"> - abc</span>
+					</li>
+				</ul>
+				<hr />
+				<div class="screen-highlight-buttons">
+					<button id="homeBtn" class="screen-highlight-btn">Home</button>
+					<button id="clearScoreBtn" class="screen-highlight-btn">
+						Clear Board
+					</button>
+				</div>
+			</div>
+		</main>
+		<!-- Footer Section  -->
+		<footer>
+			<ul>
+				<li>
+					<a
+						href="https://www.pexels.com/photo/photography-of-green-leaf-plants-1000485/"
+						>Background Image</a
+					>
+				</li>
+				<li><a href="#">Quiz Game Repo</a></li>
+			</ul>
+		</footer>
+
+		<script src="./Assets/js/index.js"></script>
+	</body>
+</html>

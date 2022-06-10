@@ -1,0 +1,274 @@
+/* Game title font  */
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+/* Content text fonts  */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
+:root {
+	--drk-clr: rgb(0, 0, 0);
+	--lght-clr: rgb(255, 255, 255);
+	--grey-clr: rgb(170, 170, 170);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html {
+	min-height: 100vh;
+}
+body {
+	font-family: 'Open Sans', sans-serif;
+	background-image: url(../imgs/pexels-marc-mueller-1000485.jpg);
+	background-size: cover;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	position: relative;
+	/* height: 100%; */
+	/* min-height: 100vh; */
+}
+
+h1 {
+	font-family: 'Kdam Thmor Pro', sans-serif;
+	font-size: 3rem;
+	color: var(--lght-clr);
+	margin: 4rem 1rem;
+	text-align: center;
+}
+
+h2 {
+	margin: 2.5rem 0rem;
+	font-size: 1.8rem;
+	color: var(--lght-clr);
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+em {
+	color: var(--grey-clr);
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Start Button Section  */
+
+#startGameContainer {
+	/* this will toggle to show and hide the start button between display flex/None */
+
+	display: none;
+	justify-content: center;
+	align-items: center;
+	height: 50vh;
+}
+#startGame {
+	text-decoration: none;
+	border: 1px solid var(--grey-clr);
+	position: relative;
+	overflow: hidden;
+	color: var(--grey-clr);
+	background-color: transparent;
+	font-size: 1.5rem;
+	padding: 1rem 3rem;
+	text-transform: uppercase;
+}
+#startGame:hover {
+	box-shadow: 1px 1px 25px 10px rgba(211, 212, 255, 0.4);
+	color: var(--lght-clr);
+	cursor: pointer;
+}
+#startGame:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		120deg,
+		transparent,
+		rgba(212, 213, 255, 0.4),
+		transparent
+	);
+	transition: all 650ms;
+}
+#startGame:hover:before {
+	left: 100%;
+}
+
+/* The Card Section  */
+
+.card {
+	/* toggle to show card block/None  */
+
+	display: none;
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 10px;
+	color: var(--lght-clr);
+	height: 65%;
+	width: 85%;
+	margin: 4.5rem auto;
+	padding: 2rem 1.8rem;
+	max-width: 980px;
+}
+.screen-playing {
+	/* Toggle to show if Questions and Answers Show  Block/None */
+
+	display: none;
+	height: 100%;
+}
+#timer {
+	text-align: end;
+}
+#answers-section {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-bottom: 2rem;
+}
+.answer {
+	margin-top: 0.5rem;
+	font-size: 1.2rem;
+	width: 90%;
+	padding: 10px;
+	border-radius: 10px;
+	transition: all 200ms ease-in;
+}
+.answer:hover {
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Scoring Section  */
+
+.screen-score {
+	/* Toggle To show the score screen block/None  */
+
+	display: none;
+	text-align: center;
+	padding: 2.5rem;
+}
+.screen-score-title {
+	font-family: 'Kdam Thmor Pro', sans-serif;
+}
+.screen-score-sec1 {
+	display: flex;
+	flex-direction: column;
+	gap: 1.2rem;
+}
+#score {
+	color: #3ae03a;
+}
+#screen-score-inputText {
+	padding: 0.6rem;
+	border: none;
+	outline: none;
+	resize: none;
+	margin: 0 0.5rem 4rem 0;
+	background-color: transparent;
+	border-bottom: 1px solid var(--grey-clr);
+	color: var(--lght-clr);
+}
+#screen-score-inputText:focus {
+	background-color: rgba(0, 0, 0, 0.4);
+	border-bottom: 1px solid var(--lght-clr);
+}
+#screen-score-Btn {
+	margin-bottom: 2.5rem;
+	padding: 0.6rem;
+	background: #228b22;
+	border: 1px solid #228b22;
+	color: white;
+}
+#screen-score-Btn:hover {
+	cursor: pointer;
+	background: darkgreen;
+	border: 1px solid darkgreen;
+}
+
+/* Highlight leaderboard Section  */
+
+.screen-highlight {
+	/* Shows End game leaderboard between display Block/None  */
+
+	display: block;
+	background: rgb(0, 0, 0, 0.4);
+	border-radius: 10px;
+	padding: 2rem;
+	margin: 5rem auto;
+	width: 75%;
+	box-shadow: 0 0 12px var(--lght-clr);
+}
+h2 {
+	text-align: center;
+}
+.screen-highlight-score-container {
+	padding: 0 0rem 1rem 1rem;
+	font-size: 1.3rem;
+}
+.screen-highlight-score {
+	padding-left: 1rem;
+	font-weight: bold;
+	color: #3ae03a;
+}
+.screen-highlight-score-initial {
+	font-weight: normal;
+	color: var(--grey-clr);
+}
+.screen-highlight-buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 2rem 1.2rem;
+	margin: 1rem 0 2.5rem 0;
+	gap: 1rem;
+}
+#homeBtn {
+	background: #228b22;
+	border: 1px solid #45ff45;
+}
+#homeBtn:hover {
+	background-color: #2aad2a;
+}
+#clearScoreBtn {
+	background: #8b2222;
+	border: 1px solid #ff1ff8;
+}
+#clearScoreBtn:hover {
+	background-color: #bb3131;
+}
+.screen-highlight-btn {
+	border-radius: 4px;
+	padding: 0.8rem;
+	color: white;
+}
+/* Footer Section  */
+
+footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 30vh;
+}
+footer a {
+	color: var(--grey-clr);
+}
+footer a:hover {
+	cursor: pointer;
+	color: var(--lght-clr);
+}
+footer li {
+	margin: 1rem;
+}
