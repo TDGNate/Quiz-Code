@@ -57,43 +57,64 @@ let questionsAnswers = [
 ]
 
 let questionsAnswersState = [];
-let timerState = '';
+let isPlayingGame = false;
+let timerState = 90;
 let score = 0;
 
 // Function to start the game 
 function startGame() {
+  isPlayingGame = true;
   // displaying HTML Elements for Questions 
   startBtnContainer.style.display = 'none';
   card.style.display = 'block';
   playEl.style.display = 'block';
   // Enable play function 
-    playingGame();
+  var a = playingGame();
+
+
+  // start the time 
+  var timerFunction = setInterval(() => {
+    if (timerState <= 1) {
+      clearInterval(timerFunction);
+      timerEl.textContent = null;
+      timerEl.style.removeProperty('animation');
+      console.log('this ended')
+    }
+    timerState -= 1;
+    timerEl.textContent = timerState;
+    if (timerState > 60) {
+      timerEl.textContent = `1:${timerState - 60}`
+      if (timerEl.textContent.length < 4) {
+        timerEl.textContent = `1:0${timerState - 60}`
+      }
+    }
+    if (timerState <= 11) {
+      timerEl.style.setProperty("animation", "blinking-red 5s infinite");
+    }
+  }, 1000);
+
 }
 
 function playingGame() {
     // get a random question 
   let questionAnswer = randomQuestion();
-  let question = questionAnswer[0];
-  // if (!questionAnswer === null) {
-  //   console.log(questionAnswer)
-  // } else if (questionAnswer === 'call again') {
-  // }
+  
   if (questionAnswer === 'All Answered') {
     console.log('All the questions have been answered!')
+    isPlayingGame = false;
+
+    return isPlayingGame;
+
   } else if (questionAnswer === 'call again') {
     playingGame();
   } else {
-
-  // if (questionAnswer === 'call again') {
-  //   playingGame()
-  // } else if (questionAnswer === 'All Answered') {
-  //   console.log('game over')
-  // } else {
+    
+    // reset content on screen
 
     questionEl.textContent = ''
     answersEl.textContent = ''
     msgEm.textContent = ''
-
+    let question = questionAnswer[0];
     let answer = questionAnswer[1];
     let solution = questionAnswer[2];
 
@@ -142,9 +163,8 @@ function playingGame() {
         }
       })
     })
+
   }
-
-
   // console.log(questionsAnswersState)
 }
 
@@ -161,7 +181,7 @@ function randomQuestion() {
   } else if (questionsAnswersState.length > null && questionsAnswersState.length === questionsAnswers.length) {
     return 'All Answered'
   } else {
-    console.log('the state is greater than 0')
+    // console.log('the state is greater than 0')
     if (questionsAnswersState.includes(question)) {
       return 'call again'
     }

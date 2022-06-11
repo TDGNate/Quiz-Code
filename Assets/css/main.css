@@ -130,6 +130,7 @@ main {
 }
 #timer {
 	text-align: end;
+	/* animation: blinking-red 5s infinite; */
 }
 #answers-section {
 	display: flex;
@@ -285,4 +286,27 @@ footer a:hover {
 }
 footer li {
 	margin: 1rem;
+}
+
+/* keyframes Animations  */
+
+@keyframes blinking-red {
+	0% {
+		color: var(--lght-clr);
+	}
+	20% {
+		color: #bb3131;
+	}
+	40% {
+		color: var(--lght-clr);
+	}
+	60% {
+		color: #bb3131;
+	}
+	80% {
+		color: var(--lght-clr);
+	}
+	100% {
+		color: #bb3131;
+	}
 }
