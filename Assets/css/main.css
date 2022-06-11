@@ -66,10 +66,10 @@ main {
 #startGameContainer {
 	/* this will toggle to show and hide the start button between display flex/None */
 
-	display: none;
+	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 50vh;
+	height: 45vh;
 }
 #startGame {
 	text-decoration: none;
@@ -120,6 +120,7 @@ main {
 	margin: 4.5rem auto;
 	padding: 2rem 1.8rem;
 	max-width: 980px;
+	/* transition: all 400ms ease; */
 }
 .screen-playing {
 	/* Toggle to show if Questions and Answers Show  Block/None */
@@ -147,6 +148,19 @@ main {
 .answer:hover {
 	cursor: pointer;
 	background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* right or wrong  */
+
+.correct {
+	color: rgb(0, 255, 0);
+	background-color: rgba(32, 45, 29, 0.7);
+	transition: all 250ms ease;
+}
+.wrong {
+	color: rgb(255, 89, 89);
+	background-color: rgba(42, 27, 27, 0.7);
+	transition: all 250ms ease;
 }
 
 /* Scoring Section  */
@@ -201,7 +215,7 @@ main {
 .screen-highlight {
 	/* Shows End game leaderboard between display Block/None  */
 
-	display: block;
+	display: none;
 	background: rgb(0, 0, 0, 0.4);
 	border-radius: 10px;
 	padding: 2rem;
