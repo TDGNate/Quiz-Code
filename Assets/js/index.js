@@ -275,13 +275,11 @@ function highlightBoard() {
 
     clearBtn.addEventListener('click', () => {
       localStorage.clear();
-      setTimeout(() => {
-        highlightBoard();
-      }, 300)
+      location.reload();
+      highlightBoard();
     })
   }
 }
-
 
 function randomQuestion() {
   let random = Math.floor(Math.random() * questionsAnswers.length)
