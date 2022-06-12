@@ -183,6 +183,7 @@ main {
 }
 #score {
 	color: #3ae03a;
+	margin: 0 0.5rem;
 }
 #screen-score-inputText {
 	padding: 0.6rem;
@@ -222,22 +223,29 @@ main {
 	padding: 2rem;
 	margin: 5rem auto;
 	width: 75%;
+	min-height: 60vh;
 	box-shadow: 0 0 12px var(--lght-clr);
 }
 h2 {
 	text-align: center;
 }
 .screen-highlight-score-container {
+	height: 100%;
 	padding: 0 0rem 1rem 1rem;
 	font-size: 1.3rem;
 }
 .screen-highlight-score {
+	margin: 1.5rem;
 	padding-left: 1rem;
 	font-weight: bold;
 	color: #3ae03a;
 }
+.screen-highlight-score:hover {
+	border-bottom: 1px solid rgb(123, 123, 123);
+}
 .screen-highlight-score-initial {
 	font-weight: normal;
+	margin-left: 0.5rem;
 	color: var(--grey-clr);
 }
 .screen-highlight-buttons {
@@ -268,6 +276,10 @@ h2 {
 	padding: 0.8rem;
 	color: white;
 }
+.subTitle {
+	color: #fff;
+}
+
 /* Footer Section  */
 
 footer {
