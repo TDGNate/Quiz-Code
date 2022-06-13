@@ -57,6 +57,8 @@ let questionsAnswers = [
   }
 ]
 
+// states 
+
 let questionsAnswersState = [];
 let scoreHighlightsMsgs = [];
 let scoreHighlights = [];
@@ -65,15 +67,17 @@ let timerState = 90;
 let score = 0;
 
 // Function to start the game 
+
 function startGame() {
   isPlayingGame = true;
   // displaying HTML Elements for Questions 
   startBtnContainer.style.display = 'none';
   card.style.display = 'block';
   playEl.style.display = 'block';
+
   // Enable play function 
   playingGame();
-  
+
   // start the time 
   var timerFunction = setInterval(() => {
     if (timerState <= 1 || isPlayingGame === false) {
@@ -97,33 +101,24 @@ function startGame() {
       timerEl.style.setProperty("animation", "blinking-red 5s infinite");
     }
   }, 1000);
-
 }
 
 function playingGame() {
     // get a random question 
   let questionAnswer = randomQuestion();
-  
   if (questionAnswer === 'All Answered') {
-    // console.log('All the questions have been answered!')
     isPlayingGame = false;
-
   } else if (questionAnswer === 'call again') {
     playingGame();
   } else {
-    
-    // reset content on screen
 
+    // reset content on screen
     questionEl.textContent = ''
     answersEl.textContent = ''
     msgEm.textContent = ''
     let question = questionAnswer[0];
     let answer = questionAnswer[1];
     let solution = questionAnswer[2];
-
-    // console.log(questionsAnswersState.includes(question))
-    // console.log(questionsAnswersState)
-
     questionEl.textContent = question;
     
     // Add each Answer Li to Page 
@@ -139,7 +134,6 @@ function playingGame() {
       element.addEventListener('click', (e) => {
         if (element.textContent === solution) {
           // When you Win, adds styles to element, and increase score 
-          // console.log('Good work')
           element.classList.add('correct')
           setTimeout(() => {
             element.classList.remove('correct')
@@ -152,7 +146,6 @@ function playingGame() {
           }, 1100)
         } else {
           // when you lose it adds red styles and deducts score and time
-          // console.log('naw g')
           element.classList.add('wrong')
           setTimeout(() => {
             element.classList.remove('wrong')
@@ -171,34 +164,28 @@ function playingGame() {
         }
       })
     })
-
   }
-  // console.log(questionsAnswersState)
 }
 
-// function restoreScore() {
-//   if (localStorage.length > 0) {
-//     for (i = 0; i < localStorage.length; i++) {
-//       let scores = JSON.parse(localStorage.getItem('userScore'));
-//       let Msgs = JSON.parse(localStorage.getItem('userInput'));
-//       scoreHighlights.push(scores[i]);
-//       scoreHighlightsMsgs.push(Msgs[i]);
-//     }
-//   }
-// }
-// restoreScore()
-
-if (localStorage.length > 0) {
+function restoreScores() {
+  // checking if there is something in localstorage 
   let scores = JSON.parse(localStorage.getItem('userScore'));
   let Msgs = JSON.parse(localStorage.getItem('userInput'));
-  for (i = 0; i < localStorage.length / 2; i++) {
-    scoreHighlights.push(scores[i]);
-    scoreHighlightsMsgs.push(Msgs[i]);
+
+  if (scores) {
+    for (i = 0; i < scores.length; i++) {
+      scoreHighlights.push(scores[i]);
+      scoreHighlightsMsgs.push(Msgs[i]);
+     } 
+    console.log(scoreHighlightsMsgs)
+  } else {
+    return
   }
 }
 
-// Score Screen Function 
+restoreScores()
 
+// save user scores 
 function saveScore() {
   // display score contents 
   playEl.style.display = 'none';
@@ -206,27 +193,24 @@ function saveScore() {
   let finalScore = score;
   scoreSpan.textContent = finalScore;
   scoreSaveBtn.addEventListener('click', () => {
+
     if (scoreInput.value === '') {
       alert("Please add your initials!\nReload page if you don't want to save score")
     } else {
       scoreHighlights.push(finalScore);
       scoreHighlightsMsgs.push(scoreInput.value);
-      // Add updated array to localstorage
 
-      
+      // Add updated array to localstorage
       localStorage.setItem('userScore', JSON.stringify(scoreHighlights));
       localStorage.setItem('userInput', JSON.stringify(scoreHighlightsMsgs));
 
-      
       scoreSpan.textContent = '';
       userScoreMsg = '';
-      // call highlight function 
+      // call highlight function
       highlightBoard();
     }
   })
 }
-
-// This function are the your highlights to save ur best scores
 
 //scoreBoardUl
 function highlightBoard() {
@@ -239,7 +223,8 @@ function highlightBoard() {
   let storedScores = JSON.parse(localStorage.getItem('userScore'));
   let storedMsgs = JSON.parse(localStorage.getItem('userInput'));
 
-  if (localStorage.length === null) {
+  // if there isn't a score change screen 
+  if (!storedScores) {
     let subTitleHighlight = document.createElement('span');
     subTitleHighlight.textContent = 'No Score Recorded';
     subTitleHighlight.setAttribute('class', 'subTitle')
@@ -253,7 +238,7 @@ function highlightBoard() {
   } else {
     clearBtn.style.setProperty('display', 'block');
 
-    for (i = 0; i < localStorage.length; i++) {
+    for (i = 0; i < JSON.parse(localStorage.getItem('userScore')).length; i++) {
 
       // creating DOM elements to store items in local storage 
       // Add list items 
@@ -272,10 +257,10 @@ function highlightBoard() {
     homeBtn.addEventListener('click', () => {
       location.reload();
     })
-
     clearBtn.addEventListener('click', () => {
       localStorage.clear();
-      location.reload();
+      document.querySelectorAll('.screen-highlight-score').forEach((el) => { el.setAttribute('class', 'restartBtn')})
+      document.querySelectorAll('.screen-highlight-score-initial').forEach((el) => { el.setAttribute('class', 'restartBtn')})
       highlightBoard();
     })
   }
@@ -294,7 +279,6 @@ function randomQuestion() {
   } else if (questionsAnswersState.length > null && questionsAnswersState.length === questionsAnswers.length) {
     return 'All Answered'
   } else {
-    // console.log('the state is greater than 0')
     if (questionsAnswersState.includes(question)) {
       return 'call again'
     }

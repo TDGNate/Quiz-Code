@@ -231,21 +231,24 @@ h2 {
 }
 .screen-highlight-score-container {
 	height: 100%;
-	padding: 0 0rem 1rem 1rem;
+	padding: 1.5rem;
+	margin: 0.5rem;
 	font-size: 1.3rem;
+	user-select: none;
+	cursor: crosshair;
 }
 .screen-highlight-score {
-	margin: 1.5rem;
-	padding-left: 1rem;
+	margin-right: 1.5rem;
+	margin-bottom: 1.5rem;
 	font-weight: bold;
 	color: #3ae03a;
 }
 .screen-highlight-score:hover {
-	border-bottom: 1px solid rgb(123, 123, 123);
+	border-bottom: 1px solid rgb(69, 69, 69);
 }
 .screen-highlight-score-initial {
 	font-weight: normal;
-	margin-left: 0.5rem;
+	margin-left: 1.5rem;
 	color: var(--grey-clr);
 }
 .screen-highlight-buttons {
@@ -277,7 +280,12 @@ h2 {
 	color: white;
 }
 .subTitle {
-	color: #fff;
+	color: rgb(255, 0, 0);
+	font-size: 1.2rem;
+	margin: 2rem auto;
+}
+.restartBtn {
+	display: none;
 }
 
 /* Footer Section  */
