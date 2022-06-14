@@ -6,7 +6,7 @@
 :root {
 	--drk-clr: rgb(0, 0, 0);
 	--lght-clr: rgb(255, 255, 255);
-	--grey-clr: rgb(170, 170, 170);
+	--grey-clr: rgb(187, 187, 187);
 }
 
 * {
@@ -59,6 +59,8 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	min-height: 65vh;
+	width: 100%;
 }
 
 /* Start Button Section  */
@@ -291,10 +293,12 @@ h2 {
 /* Footer Section  */
 
 footer {
+	background-image: linear-gradient(to top, black, transparent);
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 	align-items: center;
+	text-align: center;
 	height: 30vh;
 }
 footer a {
@@ -303,6 +307,12 @@ footer a {
 footer a:hover {
 	cursor: pointer;
 	color: var(--lght-clr);
+}
+footer ul {
+	margin-top: 1rem;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
 }
 footer li {
 	margin: 1rem;
