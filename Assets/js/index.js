@@ -23,6 +23,7 @@ const highlightDiv = document.querySelector('.screen-highlight');
 const scoreBoardUl = document.getElementById('scoreContainer');
 const homeBtn = document.getElementById('homeBtn');
 const clearBtn = document.getElementById('clearScoreBtn');
+const lbBtn = document.getElementById('leaderboardBtn');
 
 let questionsAnswers = [
   {
@@ -72,6 +73,7 @@ function startGame() {
   isPlayingGame = true;
   // displaying HTML Elements for Questions 
   startBtnContainer.style.display = 'none';
+  lbBtn.style.display = 'none';
   card.style.display = 'block';
   playEl.style.display = 'block';
 
@@ -214,10 +216,12 @@ function saveScore() {
 
 //scoreBoardUl
 function highlightBoard() {
-    // display score contents 
+  // display score contents 
+  lbBtn.style.display = 'none'
   card.style.display = 'none';
   scoreDiv.style.display = 'none';
   highlightDiv.style.display = 'block';
+  startBtnContainer.style.display = 'none';
 
   // get array in storage 
   let storedScores = JSON.parse(localStorage.getItem('userScore'));
@@ -285,4 +289,7 @@ function randomQuestion() {
   }
 }
 
-  startBtn.addEventListener('click', startGame)
+// Listeners 
+
+startBtn.addEventListener('click', startGame);
+lbBtn.addEventListener('click', highlightBoard);

@@ -28,12 +28,29 @@ body {
 	/* min-height: 100vh; */
 }
 
+header {
+	text-align: center;
+}
+
 h1 {
 	font-family: 'Kdam Thmor Pro', sans-serif;
 	font-size: 3rem;
 	color: var(--lght-clr);
-	margin: 4rem 1rem;
+	margin: 4rem 3.2rem 1rem 3.2rem;
 	text-align: center;
+}
+
+#leaderboardBtn {
+	display: block;
+	color: var(--grey-clr);
+	width: 25%;
+	margin: auto;
+	cursor: pointer;
+	transition: all 200ms ease;
+	font-size: 1.2rem;
+}
+#leaderboardBtn:hover {
+	color: rgb(0, 255, 0);
 }
 
 h2 {
