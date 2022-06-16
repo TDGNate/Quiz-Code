@@ -285,6 +285,7 @@ h2 {
 }
 #homeBtn:hover {
 	background-color: #2aad2a;
+	cursor: pointer;
 }
 #clearScoreBtn {
 	background: #8b2222;
@@ -292,6 +293,7 @@ h2 {
 }
 #clearScoreBtn:hover {
 	background-color: #bb3131;
+	cursor: pointer;
 }
 .screen-highlight-btn {
 	border-radius: 4px;
